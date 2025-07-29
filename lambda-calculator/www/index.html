@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Lambda Calculator</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="css/main.css">
+	</head>
+
+	<body>
+		<noscript>This page contains JavaScript content; please enable JavaScript in your browser.</noscript>
+		<div id="title-bar">
+			<button id="lambda-icon" type="button">λ</button>
+			<h1 id="page-title">Lambda Calculus Calculator</h1>
+		</div>
+
+		<div id="content">
+			<div id="side-bar">
+				<table id="side-table">
+					<thead>
+					<tr>
+						<th scope="col" id="key-header">
+							<label for="key-box"></label>
+							<input id="key-box" name="key-box" type="text" placeholder="name">
+						</th>
+						<th scope="col" id="expr-header">
+							<label for="expr-box"></label>
+							<input id="expr-box" name="expr-box" type="text" placeholder="expression">
+						</th>
+						<th scope="col" id="add-button-header">
+							<label for="button-add-shorthand"></label>
+							<button id="button-add-shorthand" name="button-add-shorthand" title="Add Shorthand" type="button">+</button>
+						</th>
+					</tr>
+					</thead>
+					<tbody id="table-body"></tbody>
+				</table>
+			</div>
+
+			<div id="main">
+				<div id="calc-input">
+					<input id="calc-box" title="Enter a Lambda Expression" placeholder="(λx.x) a" type="text">
+					<button id="button-simplify" title="Simplify Expression" type="button">Simplify</button>
+				</div>
+				<div id="calc-output">
+					<textarea id="output-box" title="Output" placeholder="Simplified Expression" rows="1" readonly></textarea>
+				</div>
+			</div>
+		</div>
+
+		<script language="JavaScript" src="./bootstrap.js"></script>
+	</body>
+</html>
