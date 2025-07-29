@@ -1,0 +1,6 @@
+# Directories
+/target
+/.idea
+
+# Misc
+Cargo.lock
