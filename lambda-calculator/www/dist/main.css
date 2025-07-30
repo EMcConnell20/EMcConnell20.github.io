@@ -1,0 +1,243 @@
+/* -- Base Rules -- */
+
+html {
+	overflow: scroll scroll;
+	overscroll-behavior: none;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+
+	height: 100vh; width: 100vw;
+	margin: 0; padding: 0;
+
+	overflow: scroll scroll;
+	overscroll-behavior: none;
+
+	background: #d0f0f0;
+
+	color: #101010;
+	font: 12pt Monaco, monospace;
+}
+
+input, textarea {
+	font: 12pt Tahoma, sans-serif;
+}
+
+/* -- Page Layout -- */
+
+#title-bar {
+	height: 120px;
+	width: 100%;
+}
+
+#content {
+	display: flex;
+	flex-direction: row;
+
+	width: 100%;
+	height: 100%;
+
+	overflow: scroll scroll;
+	overscroll-behavior: none;
+}
+
+#side-bar {
+	display: inline-table;
+
+	overflow: hidden scroll;
+	overscroll-behavior: none;
+
+	background: #1c1814;
+	color: #b0b0b0;
+}
+
+#main {
+	display: block;
+
+	flex: 1 1 70%;
+	height: 100%;
+}
+
+/* -- Title Bar -- */
+
+#title-bar {
+	display: flow-root;
+	background: linear-gradient(120deg, #a0d0d0 0% 4%, #90b0b8 4% 16%, #708ba0 16% 32%, #507090 32% 72%, #406880 72% 100%);
+}
+
+#lambda-icon {
+	display: block;
+	box-sizing: content-box;
+	position: absolute;
+	top: 12px;
+	left: 12px;
+
+	height: 60px;
+	width: 60px;
+	padding: 10px;
+	border: 8px inset #d0d0d0;
+	border-radius: 10px;
+
+	background: #0f0f0f;
+
+	color: #fff;
+	font: bolder 300% Verdana, sans-serif;
+	text-align: center;
+	text-anchor: middle;
+	text-shadow: #879fd1 -4px 0 14px;
+}
+
+#lambda-icon:hover {
+	background-color: #202020;
+}
+
+#lambda-icon:active, #lambda-icon:target {
+	background-color: #303030;
+}
+
+#page-title {
+	text-shadow: #808080 -2px 1px;
+	color: #f0f0f0;
+	font: bold 38pt sans-serif;
+	text-align: center;
+	text-anchor: middle;
+	text-decoration: underline #f0f0f0 solid 8px;
+
+	background: #0008;
+	outline: 8px solid #0008;
+
+	text-wrap: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis "...";
+
+	margin-left: 108px;
+	padding-left: 12px;
+}
+
+/* -- Side Table -- */
+
+#side-table {
+	border-collapse: collapse;
+	border: 2px solid #c0c0c0;
+
+	overflow: hidden scroll;
+	overscroll-behavior: none;
+
+	background: #202020;
+}
+
+#side-table > thead > tr > th {
+	padding: 4px;
+	border: 2px solid #c0c0c0;
+
+	color: #d0d0d0;
+	font: bold 14pt sans-serif;
+	text-align: center;
+}
+
+#side-table > tbody > tr > td {
+	max-width: 20vw;
+
+	padding: 4px;
+	border: 2px solid #c0c0c0;
+
+	font: 12pt Monaco, monospace;
+	overflow: hidden;
+	text-wrap: nowrap;
+	text-overflow: clip;
+}
+
+#side-table > tbody > tr > td:last-child {
+	text-align: center;
+	text-anchor: middle;
+}
+
+#side-table > tbody > tr:nth-child(even) {
+	background-color: #303030;
+}
+
+#key-box {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+#expr-box {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.button-delete-shorthand {
+	text-align: center;
+}
+
+
+/* -- Inputs -- */
+
+#calc-input {
+	display: flex;
+	flex-direction: row;
+	max-height: 25%;
+
+	margin: 20px;
+}
+
+#calc-output {
+	display: flex;
+	flex-direction: row;
+	max-height: 25%;
+
+	margin: 20px;
+}
+
+#calc-box {
+	flex: 1 1 75%;
+	min-block-size: 20px;
+	max-block-size: 100px;
+	resize: none;
+
+	border: 2px solid #141c1c;
+	border-radius: 4px;
+	padding: 4px;
+
+	overflow: scroll hidden;
+	overscroll-behavior: contain none;
+	word-wrap: normal;
+	alignment-baseline: middle;
+}
+
+#output-box {
+	flex: 1 1 75%;
+	min-block-size: 21px;
+	max-block-size: 100px;
+
+	padding: 4px;
+	border: 2px groove #141c1c;
+	border-radius: 4px;
+
+	overflow: scroll hidden;
+	overscroll-behavior: contain none;
+
+	resize: none;
+	word-wrap: normal;
+}
+
+#button-simplify {
+	flex: 0 1 15%;
+	height: 21px;
+	box-sizing: content-box;
+
+	margin-left: 8px;
+	border: 2px solid #141c1c;
+	border-radius: 4px;
+	padding: 4px;
+
+	background: slategrey;
+	color: #141c1c;
+	font: bold 100% Verdana, sans-serif;
+}
+
+.button-delete-shorthand {
+	text-align: center;
+}
