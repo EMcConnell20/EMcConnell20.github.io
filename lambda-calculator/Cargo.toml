@@ -1,0 +1,22 @@
+[package]
+name = "lambda-calculator"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["panic_hook"]
+panic_hook = ["dep:console_error_panic_hook"]
+logging = ["dep:web-sys"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+regex = "1.11"
+thiserror = "2.0"
+console_error_panic_hook = { version = "0.1", optional = true }
+web-sys = { version = "0.3", features = ["console"], optional = true }
+
+[profile.release]
+opt-level = "s"
