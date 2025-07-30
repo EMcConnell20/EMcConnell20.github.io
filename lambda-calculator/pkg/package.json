@@ -1,0 +1,17 @@
+{
+  "name": "lambda-calculator",
+  "type": "module",
+  "version": "0.1.0",
+  "files": [
+    "lambda_calculator_bg.wasm",
+    "lambda_calculator.js",
+    "lambda_calculator_bg.js",
+    "lambda_calculator.d.ts"
+  ],
+  "main": "lambda_calculator.js",
+  "types": "lambda_calculator.d.ts",
+  "sideEffects": [
+    "./lambda_calculator.js",
+    "./snippets/*"
+  ]
+}
