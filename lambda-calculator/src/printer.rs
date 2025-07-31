@@ -1,6 +1,5 @@
 // -- Imports -- //
 
-use crate::MAX_STRING_LENGTH;
 use crate::naming::{NameID, NameSpace};
 use crate::objects::{Expr, Object};
 
@@ -74,13 +73,10 @@ impl Printer {
 					self.active_copies[name_id.0] -= 1;
 				}
 				
-				
 				let out = if depth == 0 { format!("{}", out.into_iter().collect::<String>()) }
 				else { format!("({})", out.into_iter().collect::<String>()) };
 				
-				
-				if out.len() < MAX_STRING_LENGTH { String::from("error: character limit exceeded") }
-				else { out }
+				out
 			}
 		}
 	}
