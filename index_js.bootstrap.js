@@ -1,3 +1,4 @@
+"use strict";
 /*
  * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
  * This devtool is neither made for production nor for readable output files.
@@ -6,9 +7,7 @@
  * or disable the default devtool with "devtool: false".
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
+(self["webpackChunkcreate_wasm_app"] = self["webpackChunkcreate_wasm_app"] || []).push([["index_js"],{
 
 /***/ "../pkg/lambda_calculator.js":
 /*!***********************************!*\
@@ -40,6 +39,16 @@ eval("{/* harmony import */ var WEBPACK_IMPORTED_MODULE_0 = __webpack_require__(
 
 /***/ }),
 
+/***/ "./index.js":
+/*!******************!*\
+  !*** ./index.js ***!
+  \******************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+eval("{__webpack_require__.a(module, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {\n__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lambda_calc_tool__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lambda-calc-tool */ \"../pkg/lambda_calculator.js\");\n/* harmony import */ var _modules_tabled__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/tabled */ \"./modules/tabled.js\");\nvar __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([lambda_calc_tool__WEBPACK_IMPORTED_MODULE_0__, _modules_tabled__WEBPACK_IMPORTED_MODULE_1__]);\n([lambda_calc_tool__WEBPACK_IMPORTED_MODULE_0__, _modules_tabled__WEBPACK_IMPORTED_MODULE_1__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);\n\n\n// -- Imports -- //\n\n\n\n\n// -- Consts -- //\n\n/** @type {HTMLTextAreaElement} */\nconst input_box = document.getElementById(\"calc-box\");\n/** @type {HTMLTextAreaElement} */\nconst output_box = document.getElementById(\"output-box\");\n/** @type {HTMLInputElement} */\nconst key_box = document.getElementById(\"key-box\");\n/** @type {HTMLInputElement} */\nconst expr_box = document.getElementById(\"expr-box\");\n/** @type {HTMLButtonElement} */\nconst simplify_button = document.getElementById(\"button-simplify\");\n/** @type {HTMLButtonElement} */\nconst add_shorthand_button = document.getElementById(\"button-add-shorthand\");\n/** @type {HTMLButtonElement} */\nconst lambda_icon_button = document.getElementById(\"lambda-icon\");\n\nconst parser = lambda_calc_tool__WEBPACK_IMPORTED_MODULE_0__.Parser.new();\n\n// -- Functions -- //\n\nconst update_output_text = () => {\n\toutput_box.value = (0,lambda_calc_tool__WEBPACK_IMPORTED_MODULE_0__.simplify)(input_box.value, parser);\n}\n\nconst add_shorthand = () => {\n\tconst test_key = key_box.value.trim();\n\tconst test_expr = expr_box.value.trim();\n\n\tif (test_key !== \"\" && test_key !== test_expr) {\n\t\tlet expr = parser.create_keyword(test_key, test_expr);\n\t\tif (expr.length === 0) { return };\n\n\t\t(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(test_key, expr, parser);\n\n\t\tkey_box.value = \"\";\n\t\texpr_box.value = \"\";\n\t}\n}\n\n// -- Runtime Init -- //\n\nsimplify_button.addEventListener(\"click\", update_output_text);\nadd_shorthand_button.addEventListener(\"click\", add_shorthand);\nlambda_icon_button.addEventListener(\"click\", (_) => {\n\tnavigator.clipboard.writeText(\"λ\").then(() => {}).catch();\n})\n\nparser.create_keyword(\"true\", \"λx.λy.x\");\nparser.create_keyword(\"false\", \"λx.λy.y\");\nparser.create_keyword(\"not\", \"λp.p false true\");\nparser.create_keyword(\"and\", \"λp.λq.p q p\");\nparser.create_keyword(\"or\", \"λp.λq.p p q\");\n\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"true\", \"λx.λy.x\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"false\", \"λx.λy.y\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"not\", \"λp.p false true\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"and\", \"λp.λq.p q p\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"or\", \"λp.λq.p p q\", parser);\n\nparser.create_keyword(\"null\", \"λf.λx.x\");\nparser.create_keyword(\"succ\", \"λn.λf.λx.f (n f x)\");\nparser.create_keyword(\"pred\", \"λn.λf.λx.n (λg.λh.h (g f)) (λu.x) (λu.u)\");\n\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"null\", \"λf.λx.x\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"succ\", \"λn.λf.λx.f (n f x)\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"pred\", \"λn.λf.λx.n (λg.λh.h (g f)) (λu.x) (λu.u)\", parser);\n\nparser.create_keyword(\"add\", \"λm.λn.m succ n\");\nparser.create_keyword(\"sub\", \"λm.λn.n pred m\");\nparser.create_keyword(\"mul\", \"λm.λn.m (add n) null\");\nparser.create_keyword(\"pow\", \"λb.λe.e b\");\n\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"add\", \"λm.λn.m succ n\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"sub\", \"λm.λn.n pred m\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"mul\", \"λm.λn.m (add n) null\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"pow\", \"λb.λe.e b\", parser);\n\nparser.create_keyword(\"is_null\", \"λn.n (λx.false) true\");\nparser.create_keyword(\"is_ge\", \"λm.λn.is_null (sub n m)\");\nparser.create_keyword(\"is_le\", \"λm.λn.is_null (sub m n)\");\nparser.create_keyword(\"is_eq\", \"λm.λn.and (is_ge m n) (is_ge n m)\");\n\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"is_null\", \"λn.n (λx.false) true\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"is_ge\", \"λm.λn.is_null (sub n m)\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"is_le\", \"λm.λn.is_null (sub m n)\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"is_eq\", \"λm.λn.and (is_ge m n) (is_le m n)\", parser);\n\nparser.create_keyword(\"++\", \"succ\");\nparser.create_keyword(\"--\", \"pred\");\n\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"++\", \"succ\", parser);\n(0,_modules_tabled__WEBPACK_IMPORTED_MODULE_1__.add_table_row)(\"--\", \"pred\", parser);\n\ninput_box.value = \"\";\noutput_box.value = \"\";\n\n__webpack_async_result__();\n} catch(e) { __webpack_async_result__(e); } });\n\n//# sourceURL=webpack://create-wasm-app/./index.js?\n}");
+
+/***/ }),
+
 /***/ "./modules/tabled.js":
 /*!***************************!*\
   !*** ./modules/tabled.js ***!
@@ -50,208 +59,4 @@ eval("{__webpack_require__.a(module, async (__webpack_handle_async_dependencies_
 
 /***/ })
 
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			id: moduleId,
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/async module */
-/******/ 	(() => {
-/******/ 		var hasSymbol = typeof Symbol === "function";
-/******/ 		var webpackQueues = hasSymbol ? Symbol("webpack queues") : "__webpack_queues__";
-/******/ 		var webpackExports = hasSymbol ? Symbol("webpack exports") : "__webpack_exports__";
-/******/ 		var webpackError = hasSymbol ? Symbol("webpack error") : "__webpack_error__";
-/******/ 		
-/******/ 		
-/******/ 		var resolveQueue = (queue) => {
-/******/ 			if(queue && queue.d < 1) {
-/******/ 				queue.d = 1;
-/******/ 				queue.forEach((fn) => (fn.r--));
-/******/ 				queue.forEach((fn) => (fn.r-- ? fn.r++ : fn()));
-/******/ 			}
-/******/ 		}
-/******/ 		var wrapDeps = (deps) => (deps.map((dep) => {
-/******/ 			if(dep !== null && typeof dep === "object") {
-/******/ 		
-/******/ 				if(dep[webpackQueues]) return dep;
-/******/ 				if(dep.then) {
-/******/ 					var queue = [];
-/******/ 					queue.d = 0;
-/******/ 					dep.then((r) => {
-/******/ 						obj[webpackExports] = r;
-/******/ 						resolveQueue(queue);
-/******/ 					}, (e) => {
-/******/ 						obj[webpackError] = e;
-/******/ 						resolveQueue(queue);
-/******/ 					});
-/******/ 					var obj = {};
-/******/ 		
-/******/ 					obj[webpackQueues] = (fn) => (fn(queue));
-/******/ 					return obj;
-/******/ 				}
-/******/ 			}
-/******/ 			var ret = {};
-/******/ 			ret[webpackQueues] = x => {};
-/******/ 			ret[webpackExports] = dep;
-/******/ 			return ret;
-/******/ 		}));
-/******/ 		__webpack_require__.a = (module, body, hasAwait) => {
-/******/ 			var queue;
-/******/ 			hasAwait && ((queue = []).d = -1);
-/******/ 			var depQueues = new Set();
-/******/ 			var exports = module.exports;
-/******/ 			var currentDeps;
-/******/ 			var outerResolve;
-/******/ 			var reject;
-/******/ 			var promise = new Promise((resolve, rej) => {
-/******/ 				reject = rej;
-/******/ 				outerResolve = resolve;
-/******/ 			});
-/******/ 			promise[webpackExports] = exports;
-/******/ 			promise[webpackQueues] = (fn) => (queue && fn(queue), depQueues.forEach(fn), promise["catch"](x => {}));
-/******/ 			module.exports = promise;
-/******/ 			var handle = (deps) => {
-/******/ 				currentDeps = wrapDeps(deps);
-/******/ 				var fn;
-/******/ 				var getResult = () => (currentDeps.map((d) => {
-/******/ 		
-/******/ 					if(d[webpackError]) throw d[webpackError];
-/******/ 					return d[webpackExports];
-/******/ 				}))
-/******/ 				var promise = new Promise((resolve) => {
-/******/ 					fn = () => (resolve(getResult));
-/******/ 					fn.r = 0;
-/******/ 					var fnQueue = (q) => (q !== queue && !depQueues.has(q) && (depQueues.add(q), q && !q.d && (fn.r++, q.push(fn))));
-/******/ 					currentDeps.map((dep) => (dep[webpackQueues](fnQueue)));
-/******/ 				});
-/******/ 				return fn.r ? promise : getResult();
-/******/ 			}
-/******/ 			var done = (err) => ((err ? reject(promise[webpackError] = err) : outerResolve(exports)), resolveQueue(queue))
-/******/ 			body(handle, done);
-/******/ 			queue && queue.d < 0 && (queue.d = 0);
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/global */
-/******/ 	(() => {
-/******/ 		__webpack_require__.g = (function() {
-/******/ 			if (typeof globalThis === 'object') return globalThis;
-/******/ 			try {
-/******/ 				return this || new Function('return this')();
-/******/ 			} catch (e) {
-/******/ 				if (typeof window === 'object') return window;
-/******/ 			}
-/******/ 		})();
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/wasm loading */
-/******/ 	(() => {
-/******/ 		__webpack_require__.v = (exports, wasmModuleId, wasmModuleHash, importsObj) => {
-/******/ 		
-/******/ 			var req = fetch(__webpack_require__.p + "" + wasmModuleHash + ".module.wasm");
-/******/ 			var fallback = () => (req
-/******/ 				.then((x) => (x.arrayBuffer()))
-/******/ 				.then((bytes) => (WebAssembly.instantiate(bytes, importsObj)))
-/******/ 				.then((res) => (Object.assign(exports, res.instance.exports))));
-/******/ 			return req.then((res) => {
-/******/ 				if (typeof WebAssembly.instantiateStreaming === "function") {
-/******/ 		
-/******/ 					return WebAssembly.instantiateStreaming(res, importsObj)
-/******/ 						.then(
-/******/ 							(res) => (Object.assign(exports, res.instance.exports)),
-/******/ 							(e) => {
-/******/ 								if(res.headers.get("Content-Type") !== "application/wasm") {
-/******/ 									console.warn("`WebAssembly.instantiateStreaming` failed because your server does not serve wasm with `application/wasm` MIME type. Falling back to `WebAssembly.instantiate` which is slower. Original error:\n", e);
-/******/ 									return fallback();
-/******/ 								}
-/******/ 								throw e;
-/******/ 							}
-/******/ 						);
-/******/ 				}
-/******/ 				return fallback();
-/******/ 			});
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/publicPath */
-/******/ 	(() => {
-/******/ 		var scriptUrl;
-/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
-/******/ 		var document = __webpack_require__.g.document;
-/******/ 		if (!scriptUrl && document) {
-/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
-/******/ 				scriptUrl = document.currentScript.src;
-/******/ 			if (!scriptUrl) {
-/******/ 				var scripts = document.getElementsByTagName("script");
-/******/ 				if(scripts.length) {
-/******/ 					var i = scripts.length - 1;
-/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
-/******/ 				}
-/******/ 			}
-/******/ 		}
-/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
-/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
-/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
-/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
-/******/ 		__webpack_require__.p = scriptUrl + "../";
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./modules/tabled.js");
-/******/ 	
-/******/ })()
-;
+}]);
